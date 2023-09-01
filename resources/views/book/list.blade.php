@@ -10,6 +10,9 @@
 <body>
     <a class="btn btn-primary" href="/book/create">新規登録</a>
     <h3>書籍一覧</h3>
+    @if (session('success_message'))
+        <div style="color: blue;">{{ session('success_message') }}</div>
+    @endif
     <table class="table">
         <thead>
             <tr>

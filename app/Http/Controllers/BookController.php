@@ -22,4 +22,20 @@ class BookController extends Controller
         return redirect('book/create')
                 ->with('success_message', '登録に成功しました。');
     }
+    public function edit($id) {
+        return view('book.edit', [
+            'book' => Book::findOrFail($id)
+        ]);
+    }
+    public function update(Request $req, $id) {
+        $book = Book::findOrFail($id);
+        $book->fill($req->except('_token', '_method'))->save();
+        return redirect('book/list')
+                ->with('success_message', '更新に成功しました。');
+    }
+    public function show($id) {
+        return view('book.show', [
+            'book' => Book::findOrFail($id)
+        ]);
+    }
 }
