@@ -11,4 +11,12 @@ class Book extends Model
 
     protected $fillable = ['isbn', 'title', 'price', 'publisher', 'published'];
 
+    public static $rules = [
+        'isbn' => ['required', 'regex:/^978-4-[0-9]{2,6}-[0-9]{2,6}-[0-9]$/'],
+        'title' => ['required', 'string', 'max:100'],
+        'price' => ['integer' ,'min:0'],
+        'publisher' => ['required', 'max:100'],
+        'published' => ['required', 'date']
+    ];
+
 }

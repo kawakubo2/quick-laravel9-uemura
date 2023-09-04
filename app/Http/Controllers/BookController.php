@@ -16,7 +16,10 @@ class BookController extends Controller
     public function create() {
         return view('book.create');
     }
-    public function save(Request $req) {
+    public function store(Request $req) {
+        // 入力値検証(バリデーション)
+        $this->validate($req, Book::$rules);
+
         $book = new Book();
         $book->fill($req->except('_token'))->save();
         return redirect('book/create')
@@ -28,6 +31,9 @@ class BookController extends Controller
         ]);
     }
     public function update(Request $req, $id) {
+        // 入力値検証(バリデーション)
+        $this->validate($req, Book::$rules);
+
         $book = Book::findOrFail($id);
         $book->fill($req->except('_token', '_method'))->save();
         return redirect('book/list')
@@ -37,5 +43,11 @@ class BookController extends Controller
         return view('book.show', [
             'book' => Book::findOrFail($id)
         ]);
+    }
+    public function destroy($id) {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect('book/list')
+                ->with('success_message', '削除に成功しました。');
     }
 }

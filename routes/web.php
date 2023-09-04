@@ -22,7 +22,7 @@ Route::get('/hello/view', 'HelloController@view');
 
 Route::get('/book/list', 'BookController@list');
 Route::get('/book/create', 'BookController@create');
-Route::post('/book/save', 'BookController@save');
+Route::post('/book/store', 'BookController@store');
 Route::get('/book/{id}/edit', 'BookController@edit');
 Route::patch('/book/{id}', 'BookController@update');
 Route::get('/book/{id}', 'BookController@show');

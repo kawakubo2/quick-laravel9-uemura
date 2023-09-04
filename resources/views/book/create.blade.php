@@ -9,12 +9,19 @@
 </head>
 <body>
     <main class="mx-auto" style="width: 400px;">
+        @if ($errors->any())
+            <ul>
+            @foreach($errors->all() as $err)
+                <li class="text-danger">{{ $err }}</li>
+            @endforeach
+            </ul>
+        @endif
         <a class="btn btn-info" href="/book/list">書籍一覧へ戻る</a>
         <h3>書籍登録フォーム</h3>
         @if (session('success_message'))
             <div style="color: blue;">{{ session('success_message') }}</div>
         @endif
-        <form action="/book/save" method="post">
+        <form action="/book/store" method="post">
             @csrf
             <div class="pl-2">
                 <label for="isbn">ISBNコード: </label><br>

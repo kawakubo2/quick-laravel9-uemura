@@ -8,6 +8,13 @@
 </head>
 <body>
     <main class="mx-auto" style="width: 400px;">
+        @if ($errors->any())
+            <ul>
+            @foreach($errors->all() as $err)
+                <li class="text-danger">{{ $err }}</li>
+            @endforeach
+            </ul>
+        @endif
         <h3>書籍編集フォーム</h3>
         <form action="/book/{{ $book->id }}" method="post">
             @csrf
