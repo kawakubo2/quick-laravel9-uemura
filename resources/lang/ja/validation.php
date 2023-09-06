@@ -153,6 +153,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'isbn' => 'ISBNコード',
+        'title' => '書名',
+        'price' => '価格',
+        'publisher' => '出版社',
+        'published' => '刊行日'
+    ],
 
 ];

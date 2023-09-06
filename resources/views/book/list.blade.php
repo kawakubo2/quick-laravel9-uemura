@@ -9,10 +9,24 @@
 </head>
 <body>
     <a class="btn btn-primary" href="/book/create">新規登録</a>
-    <h3>書籍一覧</h3>
+    <h3>書籍検索</h3>
     @if (session('success_message'))
         <div style="color: blue;">{{ session('success_message') }}</div>
     @endif
+    <form action="/book/list" method="get">
+        <span>価格</span>
+        <select name="operand" id="operand">
+            <option value=""></option>
+            <option value="<">&lt;</option>
+            <option value="<=">&lt;=</option>
+            <option value="=">=</option>
+            <option value=">">&gt;</option>
+            <option value=">=">&gt;=</option>
+        </select>
+        <input type="number" name="price" id="price" min="0" />
+        <input type="submit" value="検索" />
+    </form>
+    <hr>
     <table class="table">
         <thead>
             <tr>
